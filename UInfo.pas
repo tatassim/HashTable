@@ -94,7 +94,7 @@ begin
     FixedRows := 1;
     ColCount := 3;
     FixedCols := 0;
-    ColWidths[0] := Width div 13;
+    ColWidths[0] := Width div 5;
     ColWidths[1] := ColWidths[0] + Width div 7;
     ColWidths[2] := ColWidths[1];
     Cells[0, 0] := 'Номер телефона';

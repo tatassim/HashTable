@@ -28,8 +28,8 @@ object FormMain: TFormMain
     RowCount = 2
     TabOrder = 0
     ColWidths = (
-      100
-      106
+      164
+      192
       252
       286)
     RowHeights = (
@@ -165,6 +165,7 @@ object FormMain: TFormMain
       object NFind: TMenuItem
         Caption = #1055#1086#1080#1089#1082
         ImageIndex = 8
+        OnClick = NFindClick
       end
     end
   end

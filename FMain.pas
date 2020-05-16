@@ -66,6 +66,7 @@ type
     procedure actClearExecute(Sender: TObject);
     procedure actRunExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure NFindClick(Sender: TObject);
   private
     procedure MyIdle(sender: TObject; var Done: Boolean);
   public
@@ -239,10 +240,9 @@ procedure TFormMain.FormResize(Sender: TObject);
 begin
   with SGMain do
   begin
-    ColWidths[0] := Width div 13;
+    ColWidths[0] := Width div 5;
     ColWidths[1] := ColWidths[0] + Width div 7;
     ColWidths[2] := ColWidths[1];
-    ColWidths[3] := ColWidths[0] * 6 + width div 58;
   end;
 end;
 
@@ -253,9 +253,24 @@ begin
   CanClose := HashTable = nil;
 end;
 
-
-
-
+procedure TFormMain.NFindClick(Sender: TObject);
+var
+  number: string;
+  SearchedInfo: TInfo;
+begin
+  if Dialogs.InputQuery('Поиск человека по номеру', 'Введите номер', number)
+    then
+    if HashTable.Find(number, SearchedInfo) then
+      with TfrmHelp.Create(nil) do
+        try
+          SetParams(SearchedInfo, true);
+          ShowModal;
+        finally
+          Free;
+        end
+    else
+      ShowMessage('Запись не найдена');
+end;
 
 end.
 
